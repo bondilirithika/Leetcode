@@ -1,7 +1,7 @@
 class Solution {
     public boolean canConstruct(String r, String m) {
       
-        HashSet<Character> set=new HashSet<>();
+        //HashSet<Character> set=new HashSet<>();
         HashMap<Character,Integer> map1=new HashMap<>();
         HashMap<Character,Integer> map2=new HashMap<>();
 
