@@ -3,7 +3,7 @@ class Solution {
     public int monkeyMove(int n) {
 //         given in questions
          
-         return (int) ((max + pow(n) - 2) % max);
+         return (int) ((max+ pow(n) - 2) % max);
     }
     private static long pow(int n) {
 		if (n == 1)
