@@ -1,27 +1,29 @@
 class Solution {
     public char findKthBit(int n, int k) {
-        String[] s=new String[n];
-        s[0]="0";
-        for(int i=1;i<n;i++)
+        StringBuilder ans=new StringBuilder();
+        ans.append('0');
+        if(n==1)
+        return '0';
+        n--;
+        while(n>0)
         {
-            StringBuilder str=new StringBuilder(s[i-1]);
-            str.append('1');
-            StringBuilder invert=new StringBuilder();
-            for(int j=s[i-1].length()-1;j>=0;j--)
-            {
-                if(s[i-1].charAt(j)=='0')
-                {
-                    invert.append('1');
-                }
-                else
-                invert.append('0');
-            }
-            str.append(invert.toString());
-            s[i]=str.toString();
+            String rev=invert(new StringBuilder(ans));
+            ans.append('1');
+            ans.append(rev);
+            n--;
         }
-        return s[n-1].charAt(k-1);
-    
+        return ans.charAt(k-1);
     }
 
-
+    String invert(StringBuilder ans)
+    {
+       for(int i=0;i<ans.length();i++)
+       {
+        if(ans.charAt(i)=='0')
+        ans.setCharAt(i,'1');
+        else
+        ans.setCharAt(i,'0');
+       }
+       return ans.reverse().toString();
+    }
 }
