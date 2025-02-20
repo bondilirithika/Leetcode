@@ -1,29 +1,18 @@
 class Solution {
     public void sortColors(int[] nums) {
-        //3 pointer solution
-        int zero=0;
-        int one=0;
-        int two=nums.length-1;
-        while(one<=two)
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i:nums)
         {
-            if(nums[one]==0)
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        int ind=0;
+        for(int i=0;i<=2;i++)
+        {
+            int c=map.getOrDefault(i,0);
+            while(c>0)
             {
-                int temp=nums[one];
-                nums[one]=nums[zero];
-                nums[zero]=temp;
-                zero++;
-                one++;
-            }
-            else if(nums[one]==1)
-            {
-                one++;
-            }
-            else
-            {
-                int temp=nums[one];
-                nums[one]=nums[two];
-                nums[two]=temp;
-                two--;
+                nums[ind++]=i;
+                c--;
             }
         }
     }
