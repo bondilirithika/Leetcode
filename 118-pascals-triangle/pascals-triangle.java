@@ -5,23 +5,21 @@ class Solution {
         for(int i=0;i<n;i++)
         {
             ArrayList<Integer> a=new ArrayList<>();
+            int ans=1;
             for(int j=0;j<i+1;j++)
             {
-                a.add(ncr(i,j));
+                if(j==0)
+                a.add(ans);
+                else
+                {
+                    ans=ans*(i+1-j)/j;
+                a.add(ans);
+                }
             }
             arr.add(a);
         }
         return arr;
 
     }
-    int ncr(int n,int r)
-    {
-        int res=1;
-        for(int i=0;i<r;i++)
-        {
-            res=res*(n-i);
-            res=res/(i+1);
-        }
-        return res;
-    }
+    
 }
