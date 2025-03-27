@@ -1,73 +1,38 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        boolean row=false;
-        boolean col=false;
-        int r=matrix.length;
-        int c=matrix[0].length;
-        for(int i=0;i<c;i++)
+        HashSet<Integer> col=new HashSet<>();
+        HashSet<Integer> row=new HashSet<>();
+        for(int i=0;i<matrix.length;i++)
         {
-            if(matrix[0][i]==0)
-            {
-                row=true;
-                break;
-            }
-        }
-        for(int i=0;i<r;i++)
-        {
-            if(matrix[i][0]==0)
-            {
-                col=true;
-                break;
-            }
-        }
-
-        for(int i=1;i<r;i++)
-        {
-            for(int j=1;j<c;j++)
+            for(int j=0;j<matrix[0].length;j++)
             {
                 if(matrix[i][j]==0)
                 {
-                    matrix[0][j]=0;
-                    matrix[i][0]=0;
+                    col.add(j);
+                    row.add(i);
                 }
             }
         }
 
-        for(int i=1;i<c;i++)
+        for(int i=0;i<matrix.length;i++)
         {
-            if(matrix[0][i]==0)
+            for(int j=0;j<matrix[0].length;j++)
             {
-                for(int j=1;j<r;j++)
+                if(row.contains(i))
                 {
-                    matrix[j][i]=0;
+                    for(int k=0;k<matrix[0].length;k++)
+                    {
+                        matrix[i][k]=0;
+                    }
                 }
-            }
-        }
-
-        for(int i=1;i<r;i++)
-        {
-            if(matrix[i][0]==0)
-            {
-                for(int j=1;j<c;j++)
+                if(col.contains(j))
                 {
-                    matrix[i][j]=0;
+                    for(int k=0;k<matrix.length;k++)
+                    {
+                        matrix[k][j]=0;
+                    }
                 }
-            }
-        }
+            }}
 
-        if(row)
-        {
-            for(int i=0;i<c;i++)
-            {
-                matrix[0][i]=0;
-            }
-        }
-        if(col)
-        {
-            for(int i=0;i<r;i++)
-            {
-                matrix[i][0]=0;
-            }
-        }
     }
 }
