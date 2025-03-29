@@ -10,8 +10,8 @@ class Solution {
             for (int[] k : a)
                 Arrays.fill(k, -1);
         
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 3; ++j) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 3;j++) {
                 if ((i == 3 && j == 0) || (i == 3 && j == 2)) continue;
                 ans = (ans + solve(i, j, n - 1)) % mod;
             }
