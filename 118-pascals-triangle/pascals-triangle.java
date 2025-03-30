@@ -1,25 +1,28 @@
 class Solution {
-    public List<List<Integer>> generate(int n) {
-        //all abt ncr
-        List<List<Integer>> arr=new ArrayList<>();
-        for(int i=0;i<n;i++)
+    public List<List<Integer>> generate(int numRows) {
+        //we are cancelling n-r fact
+        List<List<Integer>> ans=new ArrayList<>();
+        for(int n=0;n<numRows;n++)
         {
-            ArrayList<Integer> a=new ArrayList<>();
-            int ans=1;
-            for(int j=0;j<i+1;j++)
+            List<Integer> a=new ArrayList<>();
+            for(int r=0;r<=n;r++)
             {
-                if(j==0)
-                a.add(ans);
-                else
-                {
-                    ans=ans*(i+1-j)/j;
-                a.add(ans);
-                }
+                a.add(ncr(n,r));
             }
-            arr.add(a);
+            ans.add(a);
         }
-        return arr;
+        return ans;
+    }
+
+    int ncr(int n,int r)
+    {
+        int p=1;
+        for(int i=n;i>n-r;i--)
+        {
+            p=p*i;
+            p=p/(n-i+1);
+        }
+        return p;
 
     }
-    
 }
