@@ -1,37 +1,42 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int i=0; 
-        for(i=nums.length-2;i>=0;i--)
+        int ind=-1;
+        for(int i=nums.length-2;i>=0;i--)
         {
             if(nums[i]<nums[i+1])
             {
-                
+                ind=i;
                 break;
             }
         }
-        if(i>=0){
-        for(int j=nums.length-1;j>i;j--)
+        if(ind==-1)
         {
-            if(nums[j]>nums[i])
+            reverse(nums,0,nums.length-1);
+            return;
+        }
+        //find the number greater than i but smaller tahn others
+        for(int i=nums.length-1;i>ind;i--)
+        {
+            if(nums[i]>nums[ind])
             {
-                int temp=nums[j];
-                nums[j]=nums[i];
-                nums[i]=temp;
+                int temp=nums[i];
+                nums[i]=nums[ind];
+                nums[ind]=temp;
                 break;
             }
         }
-        }
+        reverse(nums,ind+1,nums.length-1);
 
-        int l=i+1;
-        int r=nums.length-1;
-        while(l<r)
+    }
+    void reverse(int[] nums,int start,int end)
+    {
+        while(start<end)
         {
-            int temp=nums[l];
-            nums[l]=nums[r];
-            nums[r]=temp;
-            l++;
-            r--;
+            int temp=nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+            start++;
+            end--;
         }
-        
     }
 }
