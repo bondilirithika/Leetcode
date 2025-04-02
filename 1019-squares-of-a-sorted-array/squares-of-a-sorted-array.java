@@ -5,13 +5,13 @@ class Solution {
         PriorityQueue<Integer> pq=new PriorityQueue<>();
         for(int i:nums)
         {
-            pq.add(Math.abs(i));
+            pq.add(i*i);
         }
         int i=0;
         while(!pq.isEmpty())
         {
             int k=pq.poll();
-            nums[i++]=k*k;
+            nums[i++]=k;
         }
         return nums;
     }
