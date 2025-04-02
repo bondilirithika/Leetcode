@@ -2,12 +2,17 @@ class Solution {
     public int[] sortedSquares(int[] nums) {
         //remove engative sign and sort teh array again
         //treat like an unsorted array
-        int[] ans=new int[nums.length];
-        for(int i=0;i<nums.length;i++)
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        for(int i:nums)
         {
-            ans[i]=nums[i]*nums[i];
+            pq.add(Math.abs(i));
         }
-        Arrays.sort(ans);
-        return ans;
+        int i=0;
+        while(!pq.isEmpty())
+        {
+            int k=pq.poll();
+            nums[i++]=k*k;
+        }
+        return nums;
     }
 }
