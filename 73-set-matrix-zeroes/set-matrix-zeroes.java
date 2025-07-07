@@ -1,27 +1,28 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        boolean firstrow=false;
-        boolean firstcol=false;
-        for(int i=0;i<matrix[0].length;i++)
+        boolean zeroInRow=false,zeroInCol=false;
+        int row=matrix.length;
+        int col=matrix[0].length;
+        for(int i=0;i<col;i++)
         {
             if(matrix[0][i]==0)
             {
-                firstrow=true;
+                zeroInRow=true;
                 break;
             }
         }
-        for(int i=0;i<matrix.length;i++)
+        for(int i=0;i<row;i++)
         {
             if(matrix[i][0]==0)
             {
-                firstcol=true;
+                zeroInCol=true;
                 break;
             }
         }
 
-        for(int i=1;i<matrix.length;i++)
+        for(int i=1;i<row;i++)
         {
-            for(int j=1;j<matrix[0].length;j++)
+            for(int j=1;j<col;j++)
             {
                 if(matrix[i][j]==0)
                 {
@@ -31,41 +32,40 @@ class Solution {
             }
         }
 
-        //going through the first row
-        for(int i=1;i<matrix[0].length;i++)
+        for(int i=1;i<col;i++)
         {
             if(matrix[0][i]==0)
             {
-                for(int j=1;j<matrix.length;j++)
+                for(int j=1;j<row;j++)
                 {
                     matrix[j][i]=0;
                 }
             }
         }
-        //going through the first col
-        for(int i=1;i<matrix.length;i++)
+
+        for(int i=1;i<row;i++)
         {
             if(matrix[i][0]==0)
             {
-                for(int j=1;j<matrix[0].length;j++)
+                for(int j=1;j<col;j++)
                 {
                     matrix[i][j]=0;
                 }
             }
         }
 
-        if(firstrow)
+        if(zeroInRow)
         {
-            for(int i=0;i<matrix[0].length;i++)
+            for(int i=0;i<col;i++)
             {
                 matrix[0][i]=0;
             }
         }
-        if(firstcol)
+        if(zeroInCol)
         {
-            for(int j=0;j<matrix.length;j++)
+            for(int i=0;i<row;i++)
             {
-                matrix[j][0]=0;
+                matrix[i][0]=0;
             }
         }
     }
