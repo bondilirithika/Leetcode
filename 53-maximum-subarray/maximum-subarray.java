@@ -1,15 +1,16 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        int ans=Integer.MIN_VALUE;
-        int cursum=0;
+        //KEDANES ALGO
+        int maxsum=Integer.MIN_VALUE;
+        int csum=0;
         for(int i:nums)
         {
-            cursum+=i;
-            if(cursum>ans)
-            ans=cursum;
-            if(cursum<0)
-            cursum=0;
+            csum+=i;
+            if(csum>maxsum)
+            maxsum=csum;
+            if(csum<0)
+            csum=0;
         }
-        return ans;
+        return maxsum;
     }
 }
