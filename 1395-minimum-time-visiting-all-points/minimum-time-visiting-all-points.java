@@ -3,13 +3,12 @@ class Solution {
         int time=0;
         for(int i=0;i<points.length-1;i++)
         {
-            int max=0;
-            for(int j=0;j<points[0].length;j++)
-            {
-                max=Math.max(max,Math.abs(points[i][j]-points[i+1][j]));
-            }
-            time+=max;
+            time+=comp(points[i],points[i+1]);
         }
         return time;
+    }
+    int comp(int[] from,int[] to)
+    {
+        return Math.max((Math.abs(from[0]-to[0])),Math.abs(from[1]-to[1]));
     }
 }
